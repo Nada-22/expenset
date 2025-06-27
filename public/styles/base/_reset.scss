@@ -1,0 +1,143 @@
+@use '../utils/vars' as * ;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+
+    #{$ltr} & {
+        direction: ltr;
+    }
+
+    #{$rtl} & {
+        direction: rtl;
+    }
+}
+
+@font-face {
+
+    font-family: Inter-roman;
+    src: url(/fonts/Inter-roman.woff2) format("opentype");
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+
+    #{$ltr} & {
+        direction: ltr;
+    }
+
+    #{$rtl} & {
+        direction: rtl;
+    }
+}
+
+body {
+    font-family: Inter-roman, sans-serif, "primeicons";
+    text-align: start;
+    font-size: var(--text-md);
+    color: var(--main-text);
+    background-color: var(--white-100);
+   
+}
+
+[dir="ltr"] {
+    font-family: Inter-roman, sans-serif, "primeicons";
+}
+
+[dir="rtl"] {
+    font-family: "Cairo", sans-serif, "primeicons";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--sub-text);
+}
+
+ul,
+ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+*::placeholder,
+.p-placeholder {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--sub-text);
+}
+
+// Custom Scroll Bar
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+    background: var(--white-90);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--sub-text) !important;
+    border-radius: 4px;
+}
+
+// custom scrollbar for firefox
+@-moz-document url-prefix() {
+
+    *,
+    html,
+    body {
+        // "auto" or "thin"
+        scrollbar-width: thin;
+        // Scroll thumb & track
+        scrollbar-color: var(--white-90) var(--sub-text);
+    }
+}
+
+// Inputs Auto Fill
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    box-shadow: 0 0 0 100px var(--white-100) inset !important;
+    -webkit-box-shadow: 0 0 0 100px var(--white-100) inset !important;
+    background-color: var(--white-100) !important;
+}
+
+// Button
+button {
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+input {
+
+    caret-color: #5b5b5b;
+    box-shadow: none !important;
+    line-height: initial;
+}

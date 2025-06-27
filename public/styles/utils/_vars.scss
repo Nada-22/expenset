@@ -1,0 +1,36 @@
+// Directions
+$ltr: "[dir='ltr']";
+$rtl: "[dir='rtl']";
+
+
+:root {
+
+    --primary-color: blue;
+
+    --main-text: #334155;
+    --sub-text: #64748b;
+    --border-color: #e2e8f0;
+    /* White shades */
+    --white-10: #FFFFFF1A;
+    --white-20: #FFFFFF33;
+    --white-30: #FFFFFF4D;
+    --white-40: #FFFFFF66;
+    --white-50: #FFFFFF80;
+    --white-60: #FFFFFF99;
+    --white-70: #FFFFFFB2;
+    --white-80: #FFFFFFCC;
+    --white-90: #FFFFFFE5;
+    --white-100: #FFFFFFE5;
+
+    /* Black shades */
+    --black-10: #0000001A;
+    --black-20: #00000033;
+    --black-30: #0000004D;
+    --black-40: #00000066;
+    --black-50: #00000080;
+    --black-60: #00000099;
+    --black-70: #000000B2;
+    --black-80: #000000CC;
+    --black-90: #000000E5;
+    --black-100: #000000;
+}

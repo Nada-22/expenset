@@ -14,7 +14,12 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       ripple: true,
       theme: {
-        preset: Aura
+        preset: Aura,
+        options: {
+          prefix: 'p',
+          darkModeSelector: false,
+          cssLayer: false
+        }
       },
       zIndex: {
         modal: 1100,    // dialog, sidebar
