@@ -1,0 +1,18 @@
+<div class="empty-box">
+
+    <img [src]="imgUrl()" alt="">
+    @if (link()) {
+
+    <h6 class="text-primary link" [routerLink]="link().routerLink">{{link().label}}</h6>
+    }
+    @if (title()) {
+
+    <h6 class="text-primary">{{title()}}</h6>
+    }
+
+    @if (description()) {
+     
+        <p class="text-dark-gray">{{description()}}</p>
+    }
+
+</div>

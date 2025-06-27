@@ -1,0 +1,10 @@
+<!-- <div class="loading-overlay">
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-message" *ngIf="message()">{{ message() }}</p>
+  </div>
+</div> -->
+
+<p-blockUI [blocked]="appState.appLoading$()">
+  <p-progressSpinner ariaLabel="loading" />
+</p-blockUI>

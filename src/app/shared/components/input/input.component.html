@@ -1,0 +1,50 @@
+<div class="input_row">
+    @if (inputLabel) {
+     
+        <label class="input-label" [for]="controlName">{{ inputLabel | translate }}</label>
+    }
+
+    @if (inputType != 'password' &&inputType != 'number' ) {
+    <input [type]="inputType" pInputText [formControl]="control" [id]="controlName" [readOnly]="isLoading"
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" class="w-100" />
+    }
+
+    @if (inputType == 'password') {
+    <p-password [toggleMask]="true" [feedback]="false" class="w-100" [formControl]="control" [id]="controlName"
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" />
+    }
+    @if (inputType == 'number') {
+
+    <p-inputnumber class="w-100" [formControl]="control" [id]="controlName"
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" />
+    }
+
+    <!-- validators Errors -->
+    @if (control.errors && isSubmitted && !isLoading) {
+    <div>
+        <small class="text-danger">
+            @if (control.errors['required']) {
+            <span>{{ 'shared.validators.required' | translate:{ field: (inputLabel | translate) } }}</span>
+            }
+
+            @if (control.errors['email']) {
+            <span>{{ 'shared.validators.invalid_email' | translate }}</span>
+            }
+
+            @if (control.errors['serverError']) {
+            <span>{{ control.errors['serverError'] }}</span>
+            }
+
+            @if (control.errors['maxlength']) {
+            <span>{{ 'shared.validators.max_length' | translate: { length: control.errors['maxlength'].requiredLength }
+                }}</span>
+            }
+
+            @if (control.errors['minlength']) {
+            <span>{{ 'shared.validators.min_length' | translate: { length: control.errors['minlength'].requiredLength }
+                }}</span>
+            }
+        </small>
+    </div>
+    }
+</div>
