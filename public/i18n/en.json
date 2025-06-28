@@ -7,6 +7,15 @@
         "forget_password": "Forget Password",
         "or_login_with": "Or Login With",
         "continue_with_google": "Continue With Google",
-        "signup":"Sign Up"
+        "signup": "Sign Up"
+    },
+    "expense": {
+        "total_balance": "Total Balance",
+        "incomes": "Incomes",
+        "expenses":"Expenses",
+        "recent_expenses":"Recent Expenses"
+    },
+    "general":{
+        "see_all":"See all"
     }
 }

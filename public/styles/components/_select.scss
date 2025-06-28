@@ -1,0 +1,29 @@
+.p-select {
+    align-items: center;
+  
+
+    &:not(.p-disabled).p-focus {
+        border-color: var(--border-color);
+    }
+
+    &-option {
+
+        // margin: .1rem;
+        margin: 2px 4px;
+        border-radius: 6px;
+        padding: .4rem;
+
+        &-selected , &-selected.p-focus {
+
+            background-color: #E5E7F3 !important;
+            color: var(--primary-color) !important;
+
+            // &.p-focus {
+            //     background-color: #E5E7F3 !important;
+            //     color: var(--primary-color) !important;
+            // }
+        }
+    }
+
+
+}

@@ -1,0 +1,94 @@
+<div class="expense-header">
+
+    <div class="flex justify-between">
+
+        <div class="user-info">
+            <p-avatar icon="pi pi-user" [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }" shape="circle" />
+            <div class="text-white">
+                <small>Good morning</small>
+                <p>Inovola User</p>
+
+            </div>
+        </div>
+
+        <div class="filter-options">
+            <p-select [options]="filterOptions" [(ngModel)]="selectedOption" optionLabel="label" optionValue="key"
+                placeholder="Select a filter option" class="w-full md:w-56" />
+
+        </div>
+    </div>
+
+
+    <div class="expense-card">
+
+        <div class="flex items-start justify-between">
+            <div>
+                <p class="fw-bold">{{'expense.total_balance' | translate}}</p>
+                <h3>{{2000 | currency}}</h3>
+
+            </div>
+
+            <i class="pi pi-ellipsis-h"></i>
+
+        </div>
+
+        <div class="flex justify-between">
+
+            <div class="incomes">
+                <div class="flex gap-2 items-center">
+
+                    <div class="incomes-icon">
+                        <i class="pi pi-arrow-down"></i>
+                    </div>
+                    <p>{{'expense.incomes' | translate}}</p>
+                </div>
+                <h4>{{2000 | currency}}</h4>
+
+
+            </div>
+            <div class="expenses">
+                <div class="flex gap-2 items-center">
+
+                    <div class="incomes-icon">
+                        <i class="pi pi-arrow-up"></i>
+                    </div>
+                    <p>{{'expense.expenses' | translate}}</p>
+                </div>
+                <h4>{{2000 | currency}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="expense-body md:mt-1 mt-28">
+    <div class="flex justify-between my-6 px-4">
+        <h5>{{'expense.recent_expenses' | translate}}</h5>
+
+        <p>{{'general.see_all' | translate}}</p>
+    </div>
+
+    <div class=" recent-expenses p-4 grid md:grid-cols-4  gap-4">
+
+        @for ( i of [1,2,3,4,5,6]; track i) {
+            <div class="expense-item">
+                <div class="expense-type">
+                    <div class="category-icon">
+                        <i class="pi pi-shopping-cart text-blue-400 m-auto"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-1">expense category</p>
+                        <span class="sub-text">Manually</span>
+                    </div>
+    
+                </div>
+    
+                <div class="expense-amount text-end">
+                    <p class="font-semibold mb-1">{{-2000 | currency}}</p>
+                    <span class="sub-text"> Today 12.00 pm</span>
+                </div>
+    
+            </div>
+          
+        }
+
+    </div>
+</div>
