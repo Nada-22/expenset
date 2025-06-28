@@ -30,6 +30,7 @@ export class InputComponent {
   @Input() inputValue = '';
   @Input() inputClass = '';
   @Input() labelClass = '';
+  @Input() placeholder = '';
 
   @Input() isLoading = false;
   @Input() isSubmitted = false;

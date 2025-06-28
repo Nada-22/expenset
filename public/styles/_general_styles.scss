@@ -1,0 +1,35 @@
+.input_row {
+    margin-bottom: 20px;
+
+    // .p-inputgroup-addon {
+    //   padding: 0;
+    // }
+
+    label {
+        // color: var(--blue-grey-700);
+        font-size: var(--text-md);
+        font-weight: 500;
+        display: block;
+        margin-bottom: .5rem;
+
+        &.required {
+            position: relative;
+
+            &::after {
+                content: "*";
+                color: red;
+                margin-inline-start: 4px;
+            }
+        }
+    }
+}
+
+.required {
+    position: relative;
+
+    &::after {
+        content: "*";
+        color: red;
+        margin-inline-start: 4px;
+    }
+}

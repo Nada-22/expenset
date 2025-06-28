@@ -1,4 +1,14 @@
 @use './utils/vars';
+@use './utils/mixins';
+
 @use './base/reset';
+@use './base/colors';
+@use './base/typography';
+
+
+@use './components/input';
+@use './components/button';
+
+
 @use './general_styles';
 // @use './components'

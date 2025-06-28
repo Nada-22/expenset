@@ -1,0 +1,28 @@
+.p-button-link {
+    .p-button-label {
+
+        color: var(--primary-color);
+        font-size: var(--text-md);
+    }
+
+    background-color: transparent !important;
+}
+
+
+.p-button {
+
+    // width: 100%;
+    &.primary-btn {
+
+        background: var(--primary-color) !important;
+        border: 0;
+    }
+
+    &.border-btn,
+    &.border-btn:hover {
+        border: 1px solid var(--border-color) !important;
+        background-color: var(--white-100) !important;
+        color: var(--black-100) !important;
+
+    }
+}

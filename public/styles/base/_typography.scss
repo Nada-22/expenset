@@ -1,0 +1,50 @@
+@use 'styles/utils/mixins' as *;
+
+h1 {
+
+    @include font(48px, 600);
+}
+
+h2 {
+
+    @include font(40px, 600);
+}
+
+h3 {
+
+    @include font(32px, 600);
+
+}
+
+h4 {
+
+    @include font(var(--text-xxl), 600);
+
+}
+
+h5 {
+
+    @include font(20px, 600);
+
+}
+
+h6 {
+
+    @include font(var(--text-xl), 600);
+}
+
+.fs-sm {
+    @include font(var(--text-sm), 400);
+}
+
+.fs-md {
+    @include font(var(--text-md), 400);
+}
+
+.fs-lg {
+    @include font(var(--text-lg), 400);
+}
+
+.fs-xl {
+    @include font(var(--text-xl), 400);
+}

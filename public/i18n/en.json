@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "write_email": "Write Email",
+        "forget_password": "Forget Password",
+        "or_login_with": "Or Login With",
+        "continue_with_google": "Continue With Google",
+        "signup":"Sign Up"
+    }
+}

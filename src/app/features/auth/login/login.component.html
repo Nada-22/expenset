@@ -1,0 +1,52 @@
+<div class="container login-container">
+
+    <h4 class="expenset text-center">Expenset</h4>
+
+
+    <form class="login-form ">
+
+        <h6 class="text-center mt-24">{{'auth.login' | translate}}</h6>
+
+
+        <div class=" mt-10">
+            <app-input [control]="loginForm.get('email')" [inputType]="'text'" [isLoading]="isLoading"
+                [isSubmitted]="isSubmitted" [inputLabel]="'auth.email'" [placeholder]="'auth.write_email'"></app-input>
+
+            <app-input [control]="loginForm.get('password')" [inputType]="'password'" [isLoading]="isLoading"
+                [isSubmitted]="isSubmitted" [inputLabel]="'auth.password'"></app-input>
+
+
+            <p-button class="text-end block" [label]="'auth.forget_password' | translate" [link]="true" />
+
+            <p-button label="login" styleClass="primary-btn w-full" routerLink="/dashboard" />
+
+            <div class="mt-10">
+
+                <div class="hr-horizental">
+                    <hr>
+                    <span>{{'auth.or_login_with' | translate}}</span>
+                    <hr>
+                </div>
+
+                <p-button [label]="'auth.continue_with_google' | translate" styleClass="border-btn w-full mb-4">
+
+                    <img src="imgs/icons/google-icon.svg" width="20" alt="">
+                </p-button>
+
+                <p-button [label]="'auth.continue_with_google' | translate" styleClass="border-btn w-full mb-4">
+
+                    <img src="imgs/icons/apple.svg" width="20" alt="">
+                </p-button>
+
+                <div class="text-center">
+
+                    <p class="sub-text"> Didn't have and account ?
+                    <p-button class="" [label]="'auth.signup' | translate" [link]="true" />
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>

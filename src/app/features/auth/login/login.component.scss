@@ -1,0 +1,39 @@
+.login-container {
+    // text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+
+    .expenset {
+        color: var(--primary-color);
+    }
+
+    .login-form {
+
+        width: 30rem;
+
+        .hr-horizental {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-block: 1rem;
+
+            hr {
+                width: 40%;
+            }
+
+            span {
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width:768px) {
+            width: 100% !important;
+        }
+    }
+}

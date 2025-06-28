@@ -5,11 +5,12 @@ $rtl: "[dir='rtl']";
 
 :root {
 
-    --primary-color: blue;
+    --primary-color: #1D55F3;
 
     --main-text: #334155;
     --sub-text: #64748b;
     --border-color: #e2e8f0;
+
     /* White shades */
     --white-10: #FFFFFF1A;
     --white-20: #FFFFFF33;
@@ -33,4 +34,14 @@ $rtl: "[dir='rtl']";
     --black-80: #000000CC;
     --black-90: #000000E5;
     --black-100: #000000;
+
+
+    //text size 
+
+    --text-xs: 10px;
+    --text-sm: 12px;
+    --text-md: 14px;
+    --text-lg: 16px;
+    --text-xl: 18px;
+    --text-xxl: 24px;
 }

@@ -1,22 +1,25 @@
 <div class="input_row">
     @if (inputLabel) {
-     
-        <label class="input-label" [for]="controlName">{{ inputLabel | translate }}</label>
+
+    <label class="input-label" [for]="controlName">{{ inputLabel | translate }}</label>
     }
 
     @if (inputType != 'password' &&inputType != 'number' ) {
     <input [type]="inputType" pInputText [formControl]="control" [id]="controlName" [readOnly]="isLoading"
-        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" class="w-100" />
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" class="w-100"
+        [placeholder]="placeholder | translate" />
     }
 
     @if (inputType == 'password') {
     <p-password [toggleMask]="true" [feedback]="false" class="w-100" [formControl]="control" [id]="controlName"
-        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" />
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }"
+        [placeholder]="placeholder | translate" />
     }
     @if (inputType == 'number') {
 
     <p-inputnumber class="w-100" [formControl]="control" [id]="controlName"
-        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }" />
+        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }"
+        [placeholder]="placeholder | translate" />
     }
 
     <!-- validators Errors -->

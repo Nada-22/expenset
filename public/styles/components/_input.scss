@@ -1,0 +1,42 @@
+input {
+
+    width: 100%;
+    font-size: initial;
+
+    &.p-inputtext {
+        // border: 1px solid var(--blue-grey-300) !important;
+
+        outline: 0;
+        font-size: var(--text-md);
+        background-color: #F4F6FA;
+        border: 0;
+
+        &:focus,
+        &:hover {
+            // border: 1px solid var(--primary-color) !important;
+        }
+
+        // &::placeholder {
+        //     // color: var(--blue-grey-500);
+        // }
+
+        &.input_invalid {
+            border-color: red !important;
+
+        }
+    }
+
+}
+
+
+
+.input_invalid {
+
+    .p-inputtext {
+        border-color: red !important;
+    }
+}
+
+.p-password {
+    width: 100%;
+}

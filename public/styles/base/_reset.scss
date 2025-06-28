@@ -1,4 +1,5 @@
-@use '../utils/vars' as * ;
+@use '../utils/vars' as *;
+
 *,
 *::before,
 *::after {
@@ -40,9 +41,9 @@ body {
     font-family: Inter-roman, sans-serif, "primeicons";
     text-align: start;
     font-size: var(--text-md);
-    color: var(--main-text);
+    // color: var(--main-text);
     background-color: var(--white-100);
-   
+
 }
 
 [dir="ltr"] {
@@ -141,3 +142,4 @@ input {
     box-shadow: none !important;
     line-height: initial;
 }
+
