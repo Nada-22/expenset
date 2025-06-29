@@ -20,6 +20,14 @@
         "amount": "Amount",
         "attach_receipt": "Attach Receipt"
     },
+    "shared": {
+        "validators": {
+            "required": "{{ field }} is required",
+            "invalid_email": "Enter a valid email",
+            "max_length": "Max length is {{ length }}",
+            "min_length": "Min length is {{ length }}"
+        }
+    },
     "general": {
         "see_all": "See all",
         "date": "Date",

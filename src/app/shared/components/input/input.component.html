@@ -25,7 +25,7 @@
     <!-- validators Errors -->
     @if (control.errors && isSubmitted && !isLoading) {
     <div>
-        <small class="text-danger">
+        <small class="text-red-500">
             @if (control.errors['required']) {
             <span>{{ 'shared.validators.required' | translate:{ field: (inputLabel | translate) } }}</span>
             }

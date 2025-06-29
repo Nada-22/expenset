@@ -21,7 +21,8 @@ input {
         // }
 
         &.input_invalid {
-            border-color: red !important;
+            border: 1px solid rgb(220, 38, 38) !important;
+
 
         }
     }
@@ -32,8 +33,9 @@ input {
 
 .input_invalid {
 
+    &.p-inputtext,
     .p-inputtext {
-        border-color: red !important;
+        border: 1px solid rgb(220, 38, 38) !important;
     }
 }
 
