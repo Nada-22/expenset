@@ -8,7 +8,7 @@
         <h6 class="text-center mt-24">{{'auth.login' | translate}}</h6>
 
 
-        <div class=" mt-10">
+        <div class="mt-10">
             <app-input [control]="loginForm.get('email')" [inputType]="'text'" [isLoading]="isLoading"
                 [isSubmitted]="isSubmitted" [inputLabel]="'auth.email'" [placeholder]="'auth.write_email'"></app-input>
 
@@ -18,7 +18,7 @@
 
             <p-button class="text-end block" [label]="'auth.forget_password' | translate" [link]="true" />
 
-            <p-button label="login" styleClass="primary-btn w-full" routerLink="/expense" />
+            <p-button [label]="'auth.login' | translate" styleClass="primary-btn w-full" routerLink="/expense" />
 
             <div class="mt-10">
 

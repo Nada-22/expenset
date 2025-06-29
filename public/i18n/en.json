@@ -12,10 +12,17 @@
     "expense": {
         "total_balance": "Total Balance",
         "incomes": "Incomes",
-        "expenses":"Expenses",
-        "recent_expenses":"Recent Expenses"
+        "expenses": "Expenses",
+        "recent_expenses": "Recent Expenses",
+        "add_expense": "Add Expense",
+        "select_category": "Select Category",
+        "categories": "Categories",
+        "amount": "Amount",
+        "attach_receipt": "Attach Receipt"
     },
-    "general":{
-        "see_all":"See all"
+    "general": {
+        "see_all": "See all",
+        "date": "Date",
+        "save": "Save"
     }
 }

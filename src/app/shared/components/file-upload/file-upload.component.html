@@ -1,0 +1,12 @@
+<div class="flex flex-col space-y-1">
+
+    <div class="relative">
+        <input type="file" id="receipt-upload" class="hidden" (change)="uploadFile($event)" />
+
+        <!-- Custom Input Field -->
+        <label for="receipt-upload" class="file-label">
+            <span>{{ file? file.name : 'Upload image'}}</span>
+            <i class="pi pi-camera"></i>
+        </label>
+    </div>
+</div>

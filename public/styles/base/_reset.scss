@@ -42,7 +42,7 @@ body {
     text-align: start;
     font-size: var(--text-md);
     // color: var(--main-text);
-    background-color: #FAFCFC;
+    background-color: #FFFFFF;
 
 }
 
@@ -143,3 +143,28 @@ input {
     line-height: initial;
 }
 
+
+.p-toast {
+
+    &-summary {
+        display: none;
+    }
+
+    &-message-error {
+        .p-toast-detail {
+            color: rgb(220, 38, 38) !important;
+        }
+
+    }
+
+    .p-toast-close-button:focus-visible {
+        outline-color: transparent !important;
+    }
+
+    @media (max-width:786px) {
+        width: 23rem !important;
+        right: 1rem !important;
+
+    }
+
+}

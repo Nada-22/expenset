@@ -1,9 +1,13 @@
 .p-select {
     align-items: center;
-  
+
 
     &:not(.p-disabled).p-focus {
         border-color: var(--border-color);
+    }
+
+    &-label.p-placeholder {
+        color: var(--sub-text);
     }
 
     &-option {
@@ -13,7 +17,8 @@
         border-radius: 6px;
         padding: .4rem;
 
-        &-selected , &-selected.p-focus {
+        &-selected,
+        &-selected.p-focus {
 
             background-color: #E5E7F3 !important;
             color: var(--primary-color) !important;
@@ -26,4 +31,8 @@
     }
 
 
+    &.no_border_select {
+        background-color: #F4F6FA !important;
+        border: 0 !important;
+    }
 }

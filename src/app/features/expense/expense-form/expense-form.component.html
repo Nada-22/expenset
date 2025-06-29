@@ -1,1 +1,35 @@
-<p>expense-form works!</p>
+<form class="p-4 expense-form">
+    <div CLASS="flex items-center gap-28">
+
+        <i class="pi pi-arrow-left"></i>
+        <h5>{{'expense.add_expense' | translate}}</h5>
+    </div>
+
+    <div class="grid mt-8">
+
+        <div class="input_row">
+            <label for="categories">{{'expense.categories' | translate}}</label>
+            <p-select formControlName="category" styleClass="no_border_select" id="categories" [options]="categories"
+                optionLabel="label" optionValue="key" [placeholder]="'expense.select_category' | translate"
+                class="w-full" />
+        </div>
+        <div>
+            <app-input [control]="expenseForm.get('amount')" [inputType]="'number'" [isLoading]="isLoading"
+                [isSubmitted]="isSubmitted" [inputLabel]="'expense.amount'"
+                [placeholder]="'expense.write_amount'"></app-input>
+        </div>
+        <div class="input_row">
+            <label for="date">{{'general.date' | translate}}</label>
+            <p-datepicker formControlName="date" [iconDisplay]="'input'" [showIcon]="true" inputId="date" />
+        </div>
+        <div class="input_row">
+            <label for="categories">{{'expense.attach_receipt' | translate}}</label>
+            <app-file-upload />
+        </div>
+
+        <div>
+            <p-button [label]="'general.save' | translate" styleClass="primary-btn w-full" />
+
+        </div>
+    </div>
+</form>

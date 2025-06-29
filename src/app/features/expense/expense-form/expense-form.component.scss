@@ -1,0 +1,11 @@
+.expense-form {
+    padding: 5rem;
+    width: 50vw;
+    margin: auto;
+
+    @media (max-width:786px) {
+        
+        padding: 1rem !important;
+        width: 100% !important;
+    }
+}

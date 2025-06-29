@@ -1,0 +1,14 @@
+.file-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F4F6FA;
+    height: 40px;
+    padding: .5rem .75rem;
+    color: var(--sub-text);
+    font-size: var(--text-sm);
+
+    i {
+        color: #94a3b8;
+    }
+}
