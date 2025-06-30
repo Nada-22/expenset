@@ -1,12 +1,17 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, HostListener, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ExpenseI } from '@interfaces/expense';
 import { TranslateModule } from '@ngx-translate/core';
+import { ExpenseService } from '@services/expense.service';
+import { AppState } from '@state/app.state';
 import { MenuItem } from 'primeng/api';
 import { Avatar, AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { SelectModule } from 'primeng/select';
+import { ExpenseItemComponent } from "./expense-item/expense-item.component";
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-expense-list',
@@ -17,7 +22,9 @@ import { SelectModule } from 'primeng/select';
     FormsModule,
     TranslateModule,
     CurrencyPipe,
-    MenuModule
+    MenuModule,
+    ExpenseItemComponent,
+ 
 
   ],
   templateUrl: './expense-list.component.html',
@@ -25,7 +32,19 @@ import { SelectModule } from 'primeng/select';
 })
 export class ExpenseListComponent {
 
-  router=inject(Router);
+  router = inject(Router);
+  expenseService = inject(ExpenseService);
+  destroyRef = inject(DestroyRef);
+  appState = inject(AppState);
+
+  expenses!: ExpenseI[];
+  uiExpenses: ExpenseI[] = [];
+  filteredExpenses: ExpenseI[] = [];
+
+
+
+  selectedFilter!: number;
+
   filterOptions = [
     {
       label: 'this month',
@@ -36,27 +55,50 @@ export class ExpenseListComponent {
       key: 2
     },
   ]
+
   items: MenuItem[] = [
 
     {
-      label:'Add Expense',
-      command:()=>{
-        this.router.navigate(['/expense','add'])
+      label: 'Add Expense',
+      command: () => {
+        this.router.navigate(['/expense', 'add'])
       }
     }
   ]
-  selectedOption = 1;
+
   userName!: string;
+  totalUsdAmount = 0;
 
   ngOnInit() {
-    this.getUserName()
+    this.getUserName();
+    this.getExpenses();
   }
 
   getUserName() {
 
     this.userName = localStorage.getItem('userEmail')?.split('@')[0] as string;
 
-    console.log(this.userName);
-
   }
+
+
+  getExpenses() {
+    this.appState.setAppLoading(true);
+    this.expenseService.getAllExpenses().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: res => {
+        this.appState.setAppLoading(false);
+        this.expenses = res;
+        this.expenses.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    
+      
+      
+
+      },
+      error: err => {
+        this.appState.setAppLoading(false);
+        console.error(err);
+      }
+    });
+  }
+
+
 }

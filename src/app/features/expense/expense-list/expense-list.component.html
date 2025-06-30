@@ -12,8 +12,8 @@
         </div>
 
         <div class="filter-options">
-            <p-select [options]="filterOptions" [(ngModel)]="selectedOption" optionLabel="label" optionValue="key"
-                placeholder="Select a filter option" class="w-full md:w-56" />
+            <p-select [options]="filterOptions" [(ngModel)]="selectedFilter" optionLabel="label" optionValue="key"
+                placeholder="Select a filter option" class="w-full md:w-56" [showClear]="true" />
 
         </div>
     </div>
@@ -24,7 +24,7 @@
         <div class="flex items-start justify-between">
             <div>
                 <p class="fw-bold">{{'expense.total_balance' | translate}}</p>
-                <h3>{{2000 | currency}}</h3>
+                <h3>{{totalUsdAmount | currency}}</h3>
 
             </div>
 
@@ -69,27 +69,11 @@
 
     <div class=" recent-expenses p-4 grid md:grid-cols-4  gap-4">
 
-        @for ( i of [1,2,3,4,5,6]; track i) {
-            <div class="expense-item">
-                <div class="expense-type">
-                    <div class="category-icon">
-                        <i class="pi pi-shopping-cart text-blue-400 m-auto"></i>
-                    </div>
-                    <div>
-                        <p class="font-semibold mb-1">expense category</p>
-                        <span class="sub-text">Manually</span>
-                    </div>
-    
-                </div>
-    
-                <div class="expense-amount text-end">
-                    <p class="font-semibold mb-1">{{-2000 | currency}}</p>
-                    <span class="sub-text"> Today 12.00 pm</span>
-                </div>
-    
-            </div>
-          
+        @for ( expense of expenses; track expense) {
+        <app-expense-item [expense]="expense"></app-expense-item>
+
         }
 
     </div>
+
 </div>

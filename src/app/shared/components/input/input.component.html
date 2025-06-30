@@ -18,7 +18,7 @@
     @if (inputType == 'number') {
 
     <p-inputnumber class="w-100" [formControl]="control" [id]="controlName"
-        [ngClass]="{ 'input_invalid': control.errors && isSubmitted && !isLoading }"
+        [ngClass]="{ 'invalid_element': control.errors && isSubmitted && !isLoading }"
         [placeholder]="placeholder | translate" />
     }
 

@@ -54,27 +54,3 @@
     }
 }
 
-.expense-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--white-100);
-    border-radius: 8px;
-    box-shadow: 0px 1px 4px #e2e8f0;
-    padding: .6rem;
-
-    .expense-type {
-        display: flex;
-        align-items: center;
-        gap: .4rem;
-
-
-        .category-icon {
-            width: 2rem;
-            height: 2rem;
-            background-color: #E5E7F3;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-        }
-    }
-}
