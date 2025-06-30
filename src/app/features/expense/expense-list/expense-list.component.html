@@ -69,11 +69,18 @@
 
     <div class=" recent-expenses p-4 grid md:grid-cols-4  gap-4">
 
-        @for ( expense of expenses; track expense) {
+        @for ( expense of uiExpenses; track expense) {
         <app-expense-item [expense]="expense"></app-expense-item>
 
         }
 
     </div>
 
+    @if (isLoadingMore) {
+
+    <div class="text-center">
+        <p-progress-spinner strokeWidth="5" fill="transparent" animationDuration=".5s"
+            [style]="{ width: '40px', height: '40px' }" />
+    </div>
+    }
 </div>

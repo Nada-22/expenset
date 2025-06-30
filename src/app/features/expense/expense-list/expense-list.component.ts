@@ -11,6 +11,7 @@ import { Avatar, AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { SelectModule } from 'primeng/select';
 import { ExpenseItemComponent } from "./expense-item/expense-item.component";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -24,7 +25,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     CurrencyPipe,
     MenuModule,
     ExpenseItemComponent,
- 
+    ProgressSpinnerModule,
 
   ],
   templateUrl: './expense-list.component.html',
@@ -39,9 +40,11 @@ export class ExpenseListComponent {
 
   expenses!: ExpenseI[];
   uiExpenses: ExpenseI[] = [];
-  filteredExpenses: ExpenseI[] = [];
+ 
 
-
+  pageSize = 10;
+  currentPage = 0;
+  isLoadingMore = false;
 
   selectedFilter!: number;
 
@@ -88,9 +91,11 @@ export class ExpenseListComponent {
         this.appState.setAppLoading(false);
         this.expenses = res;
         this.expenses.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    
-      
-      
+        this.currentPage = 0;
+        this.uiExpenses = []; // reset view
+        this.loadMoreExpenses();
+        this.totalUsdAmount = this.calculateTotalUsd(res);
+  
 
       },
       error: err => {
@@ -100,5 +105,44 @@ export class ExpenseListComponent {
     });
   }
 
+  loadMoreExpenses() {
+    const start = this.currentPage * this.pageSize;
+    const end = start + this.pageSize;
+    const chunk = this.expenses.slice(start, end);
+    this.uiExpenses = [...this.uiExpenses, ...chunk];
+    this.currentPage++;
+    this.isLoadingMore = false;
+  }
 
+  hasMoreExpenses(): boolean {
+    return this.uiExpenses.length < this.expenses.length;
+  }
+
+  calculateTotalUsd(expenses: ExpenseI[]): number {
+    return expenses.reduce((sum, item) => sum + (item.usdAmount || 0), 0);
+  }
+
+
+
+
+  resetPagination() {
+    this.currentPage = 0;
+    this.uiExpenses = [];
+    this.loadMoreExpenses(); // restart pagination
+  }
+
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+
+    if (nearBottom && !this.isLoadingMore && this.hasMoreExpenses()) {
+      this.isLoadingMore = true;
+
+      setTimeout(() => {
+        this.loadMoreExpenses();
+        // this.isLoadingMore = false;
+      }, 2000);
+    }
+  }
 }
