@@ -20,7 +20,7 @@
         "amount": "Amount",
         "attach_receipt": "Attach Receipt",
         "category": "Category",
-        "receipt":"Receipt"
+        "receipt": "Receipt"
     },
     "shared": {
         "validators": {
@@ -34,6 +34,10 @@
         "see_all": "See all",
         "date": "Date",
         "save": "Save",
-        "currency":"Currency"
+        "currency": "Currency",
+        "good_morning": "Good morning",
+        "this_month": "This Month",
+        "last_7_days": "Last 7 Days",
+        "select": "Select"
     }
 }

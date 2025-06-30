@@ -14,7 +14,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     InputComponent,
     TranslateModule,
     ButtonModule,
-    RouterLink,
     ReactiveFormsModule,
     FormsModule
   ],

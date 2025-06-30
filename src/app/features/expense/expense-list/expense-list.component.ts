@@ -3,7 +3,7 @@ import { Component, DestroyRef, HostListener, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExpenseI } from '@interfaces/expense';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ExpenseService } from '@services/expense.service';
 import { AppState } from '@state/app.state';
 import { MenuItem } from 'primeng/api';
@@ -13,6 +13,9 @@ import { SelectModule } from 'primeng/select';
 import { ExpenseItemComponent } from "./expense-item/expense-item.component";
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ButtonModule } from 'primeng/button';
+import { LangE } from 'src/app/core/enums/lang.enum';
+import { TranslationService } from '@services/translation.service';
 
 @Component({
   selector: 'app-expense-list',
@@ -26,6 +29,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     MenuModule,
     ExpenseItemComponent,
     ProgressSpinnerModule,
+    ButtonModule
 
   ],
   templateUrl: './expense-list.component.html',
@@ -37,6 +41,8 @@ export class ExpenseListComponent {
   expenseService = inject(ExpenseService);
   destroyRef = inject(DestroyRef);
   appState = inject(AppState);
+  _translation = inject(TranslationService);
+  _translate = inject(TranslateService);
 
   expenses!: ExpenseI[];
   uiExpenses: ExpenseI[] = [];
@@ -50,11 +56,11 @@ export class ExpenseListComponent {
 
   filterOptions = [
     {
-      label: 'this month',
+      label: 'general.this_month',
       key: 1
     },
     {
-      label: 'last 7 days',
+      label: 'general.last_7_days',
       key: 2
     },
   ]
@@ -62,7 +68,7 @@ export class ExpenseListComponent {
   items: MenuItem[] = [
 
     {
-      label: 'Add Expense',
+      label: 'expense.add_expense',
       command: () => {
         this.router.navigate(['/expense', 'add'])
       }
@@ -187,5 +193,19 @@ export class ExpenseListComponent {
         // this.isLoadingMore = false;
       }, 2000);
     }
+  }
+
+  changeLang() {
+    console.log(this._translation.defaultLang());
+
+    switch (this._translation.defaultLang()) {
+      case LangE.AR:
+        this._translation.changeLang(LangE.EN)
+        break;
+      case LangE.EN:
+        this._translation.changeLang(LangE.AR)
+        break;
+    }
+
   }
 }

@@ -1,0 +1,43 @@
+{
+    "auth": {
+        "login": "تسجيل الدخول",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "write_email": "اكتب البريد الإلكتروني",
+        "forget_password": "نسيت كلمة المرور",
+        "or_login_with": "أو سجل الدخول بواسطة",
+        "continue_with_google": "تابع باستخدام جوجل",
+        "signup": "إنشاء حساب"
+    },
+    "expense": {
+        "total_balance": "إجمالي الرصيد",
+        "incomes": "الإيرادات",
+        "expenses": "المصروفات",
+        "recent_expenses": "المصروفات الأخيرة",
+        "add_expense": "إضافة مصروف",
+        "select_category": "اختر الفئة",
+        "categories": "الفئات",
+        "amount": "المبلغ",
+        "attach_receipt": "إرفاق إيصال",
+        "category": "الفئة",
+        "receipt": "الإيصال"
+    },
+    "shared": {
+        "validators": {
+            "required": "حقل {{ field }} مطلوب",
+            "invalid_email": "أدخل بريدًا إلكترونيًا صحيحًا",
+            "max_length": "الحد الأقصى للطول هو {{ length }}",
+            "min_length": "الحد الأدنى للطول هو {{ length }}"
+        }
+    },
+    "general": {
+        "see_all": "عرض الكل",
+        "date": "التاريخ",
+        "save": "حفظ",
+        "currency": "العملة",
+        "good_morning": "صباح الخير",
+        "this_month": "هذا الشهر",
+        "last_7_days": "اخر 7 ايام",
+        "select":"اختر"
+    }
+}

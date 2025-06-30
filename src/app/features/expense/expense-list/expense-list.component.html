@@ -5,15 +5,24 @@
         <div class="user-info">
             <p-avatar icon="pi pi-user" [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }" shape="circle" />
             <div class="text-white">
-                <small>Good morning</small>
+                <small>{{'general.good_morning' | translate}}</small>
                 <p>{{userName}}</p>
 
             </div>
         </div>
 
-        <div class="filter-options">
+        <div class="flex gap-2 items-center">
+
+            <p-button [label]="_translation.defaultLang()" styleClass="border-btn text-sm" (onClick)="changeLang()">
+
+                <img src="imgs/icons/lang.svg" width="14" alt="">
+            </p-button>
             <p-select [options]="filterOptions" [(ngModel)]="selectedFilter" optionLabel="label" optionValue="key"
-                placeholder="Select a filter option" class="w-full md:w-56" (onChange)="onFilter()" [showClear]="true" />
+                [placeholder]="'general.select' | translate" class="w-full md:w-56" (onChange)="onFilter()"
+                [showClear]="true">
+                <ng-template pTemplate="item" let-item>
+                    <span class="">{{item.label | translate}}</span>
+                </ng-template></p-select>
 
         </div>
     </div>
@@ -31,7 +40,11 @@
             <i class="pi pi-ellipsis-h" (click)="menu.toggle($event)"></i>
 
         </div>
-        <p-menu #menu [model]="items" [popup]="true" appendTo="body" />
+        <p-menu #menu [model]="items" [popup]="true" appendTo="body">
+            <ng-template pTemplate="item" let-item>
+                <span class=" p-menu-item-link">{{item.label | translate}}</span>
+            </ng-template>
+        </p-menu>
 
         <div class="flex justify-between">
 
