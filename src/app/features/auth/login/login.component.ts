@@ -49,6 +49,7 @@ export class LoginComponent {
         next: (res) => {
           // localStorage.setItem('auth_token', res.token);
           this.authService.storeToken(res.token);
+          localStorage.setItem('userEmail', this.loginForm.get('email')?.value as string)
           this.router.navigate(['/expense']);
         },
         error: () => {

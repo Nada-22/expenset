@@ -13,7 +13,7 @@ export class FileUploadComponent {
   fileService = inject(FileService);
   toastService = inject(ToastService);
 
-  fileUploaded = output<File | null>();
+  fileUploaded = output<File>();
   file!: File;
   uploadFile(event: any) {
 

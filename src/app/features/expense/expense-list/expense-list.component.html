@@ -6,7 +6,7 @@
             <p-avatar icon="pi pi-user" [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }" shape="circle" />
             <div class="text-white">
                 <small>Good morning</small>
-                <p>Inovola User</p>
+                <p>{{userName}}</p>
 
             </div>
         </div>
@@ -28,9 +28,10 @@
 
             </div>
 
-            <i class="pi pi-ellipsis-h"></i>
+            <i class="pi pi-ellipsis-h" (click)="menu.toggle($event)"></i>
 
         </div>
+        <p-menu #menu [model]="items" [popup]="true" appendTo="body" />
 
         <div class="flex justify-between">
 

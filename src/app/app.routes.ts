@@ -4,7 +4,10 @@ import { authGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
 
     {
-        path: '', canActivate:[authGuard], children: [
+        path: '', canActivate: [authGuard], children: [
+            {
+                path: '', redirectTo: 'expense', pathMatch: 'full'
+            },
             {
                 path: 'expense',
                 loadChildren: () => import('@features/expense/expense.routes').then(m => m.ExpenseRoutes)
