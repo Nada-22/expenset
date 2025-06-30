@@ -40,7 +40,7 @@ export class ExpenseListComponent {
 
   expenses!: ExpenseI[];
   uiExpenses: ExpenseI[] = [];
- 
+  filteredExpenses: ExpenseI[] = [];
 
   pageSize = 10;
   currentPage = 0;
@@ -95,7 +95,7 @@ export class ExpenseListComponent {
         this.uiExpenses = []; // reset view
         this.loadMoreExpenses();
         this.totalUsdAmount = this.calculateTotalUsd(res);
-  
+        this.onFilter();
 
       },
       error: err => {
@@ -108,22 +108,66 @@ export class ExpenseListComponent {
   loadMoreExpenses() {
     const start = this.currentPage * this.pageSize;
     const end = start + this.pageSize;
-    const chunk = this.expenses.slice(start, end);
+    const chunk = this.filteredExpenses.slice(start, end);
     this.uiExpenses = [...this.uiExpenses, ...chunk];
     this.currentPage++;
     this.isLoadingMore = false;
   }
 
   hasMoreExpenses(): boolean {
-    return this.uiExpenses.length < this.expenses.length;
+    return this.uiExpenses.length < this.filteredExpenses.length;
   }
+
 
   calculateTotalUsd(expenses: ExpenseI[]): number {
     return expenses.reduce((sum, item) => sum + (item.usdAmount || 0), 0);
   }
 
 
+  onFilter() {
 
+    this.appState.setAppLoading(true);
+    const today = new Date();
+
+    let filtered: ExpenseI[] = [];
+
+    //This month
+    if (this.selectedFilter === 1) {
+
+      const currentMonth = today.getMonth();
+      const currentYear = today.getFullYear();
+
+      filtered = this.expenses.filter(exp => {
+        const expDate = new Date(exp.date);
+        return expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear;
+      });
+
+    }
+
+    // Last 7 days
+    else if (this.selectedFilter === 2) {
+
+      const last7Days = new Date(today);
+      last7Days.setDate(today.getDate() - 7);
+
+      filtered = this.expenses.filter(exp => {
+        const expDate = new Date(exp.date);
+        return expDate >= last7Days && expDate <= today;
+      });
+    }
+
+    // All
+    else {
+      filtered = this.expenses;
+    }
+
+    this.filteredExpenses = filtered;
+    this.resetPagination(); // important
+    setTimeout(() => {
+
+      this.appState.setAppLoading(false);
+    }, 1000);
+  }
 
   resetPagination() {
     this.currentPage = 0;
