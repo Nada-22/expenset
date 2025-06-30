@@ -1,3 +1,12 @@
+@mixin categoryIcon($bg, $cl) {
+    background-color: $bg !important;
+
+    i {
+
+        color: $cl !important;
+    }
+}
+
 .expense-item {
     display: flex;
     justify-content: space-between;
@@ -12,13 +21,52 @@
         gap: .4rem;
 
 
-        .category-icon {
+         .category-icon {
             width: 2rem;
             height: 2rem;
             background-color: #E5E7F3;
             border-radius: 50%;
             display: flex;
             justify-content: center;
+
+
+            &.transport {
+
+                @include categoryIcon(#E2D3F6, #6069D8)
+            }
+
+            &.rent {
+
+                @include categoryIcon(#F7EBE4, #eaa43a)
+            }
+
+            &.gas {
+
+                @include categoryIcon(#F5E5E6, #F1A6B6)
+            }
+
+            &.shopping {
+
+                @include categoryIcon(#FCEEC7, #f4c954)
+            }
+
+            &.groceries {
+
+                @include categoryIcon(#E6E5F5, #7791F2)
+            }
+
+            &.entertainment {
+
+                @include categoryIcon(#E5E7F3, #60a5fa)
+            }
+
+            &.newspaper {
+
+                @include categoryIcon(#FBF7F3, #f4db6c)
+            }
+
+
+
         }
     }
 }

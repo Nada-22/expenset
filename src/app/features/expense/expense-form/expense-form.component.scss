@@ -1,11 +1,95 @@
+@mixin categoryIcon($bg, $cl) {
+    background-color: $bg !important;
+
+    i {
+
+        color: $cl !important;
+    }
+}
+
 .expense-form {
     padding: 5rem;
     width: 50vw;
     margin: auto;
 
     @media (max-width:786px) {
-        
+
         padding: 1rem !important;
         width: 100% !important;
+    }
+
+    .category-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-block: 1rem;
+        gap: .6rem;
+
+        span {
+
+            font-size: var(--text-sm);
+        }
+
+        .category-icon {
+            width: 2rem;
+            height: 2rem;
+            background-color: #E5E7F3;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+
+
+            &.transport {
+
+                @include categoryIcon(#E2D3F6, #6069D8)
+            }
+
+            &.rent {
+
+                @include categoryIcon(#F7EBE4, #eaa43a)
+            }
+
+            &.gas {
+
+                @include categoryIcon(#F5E5E6, #F1A6B6)
+            }
+
+            &.shopping {
+
+                @include categoryIcon(#FCEEC7, #f4c954)
+            }
+
+            &.groceries {
+
+                @include categoryIcon(#E6E5F5, #7791F2)
+            }
+
+            &.entertainment {
+
+                @include categoryIcon(#E5E7F3, #60a5fa)
+            }
+
+            &.newspaper {
+
+                @include categoryIcon(#FBF7F3, #f4db6c)
+            }
+
+
+
+        }
+
+        &.active {
+            .category-icon {
+
+                @include categoryIcon(var(--primary-color), white);
+
+            }
+
+            span {
+                color: var(--primary-color) !important;
+            }
+
+        }
     }
 }

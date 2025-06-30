@@ -1,0 +1,13 @@
+@for (item of visibleData; track item) {
+<div>
+    <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+</div>
+
+}
+
+@if (isLoading) {
+
+<div class="spinner">
+    <p-progressSpinner styleClass="small-spinner"></p-progressSpinner>
+</div>
+}

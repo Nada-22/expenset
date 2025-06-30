@@ -33,6 +33,7 @@
     "general": {
         "see_all": "See all",
         "date": "Date",
-        "save": "Save"
+        "save": "Save",
+        "currency":"Currency"
     }
 }

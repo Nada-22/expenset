@@ -1,18 +1,29 @@
-<form class="p-4 expense-form">
+<form class="p-4 expense-form" [formGroup]="expenseForm">
     <div CLASS="flex items-center gap-28">
 
-        <i class="pi pi-arrow-left"></i>
+        <i class="pi pi-arrow-left" routerLink="/expense"></i>
         <h5>{{'expense.add_expense' | translate}}</h5>
     </div>
 
     <div class="grid mt-8">
 
         <div class="input_row">
-            <label for="categories">{{'expense.categories' | translate}}</label>
-            <p-select formControlName="category" styleClass="no_border_select" id="categories" [options]="categories"
-                optionLabel="label" optionValue="key" [placeholder]="'expense.select_category' | translate"
-                class="w-full" />
+            <label for="categories">{{'general.currency' | translate}}</label>
+            <p-select formControlName="currencyRate" styleClass="no_border_select" id="categories"
+                [options]="currencyRates|keyvalue" optionLabel="key" optionValue="value" [filter]="true"
+                [placeholder]="'expense.select_category' | translate" class="w-full" [loading]="currencyLoading"
+                [lazy]="true" [class.invalid_element]="isSubmitted &&controls['category'].errors" />
+            @if (controls['category'].errors && isSubmitted && !isLoading) {
+            <small class="text-red-500">
+                @if (controls['category'].errors!['required']) {
+                <span>{{ 'shared.validators.required' | translate:{ field: 'expense.category' | translate } }}</span>
+                }
+
+            </small>
+
+            }
         </div>
+    
         <div>
             <app-input [control]="expenseForm.get('amount')" [inputType]="'number'" [isLoading]="isLoading"
                 [isSubmitted]="isSubmitted" [inputLabel]="'expense.amount'"
@@ -20,15 +31,66 @@
         </div>
         <div class="input_row">
             <label for="date">{{'general.date' | translate}}</label>
-            <p-datepicker formControlName="date" [iconDisplay]="'input'" [showIcon]="true" inputId="date" />
+            <p-datepicker formControlName="date" [iconDisplay]="'input'" [showIcon]="true" inputId="date"
+                [class.invalid_element]="isSubmitted &&controls['date'].errors" placeholder="12/12/2025" />
+            @if (controls['date'].errors && isSubmitted && !isLoading) {
+
+            <small class="text-red-500">
+                @if (controls['date'].errors!['required']) {
+                <span>{{ 'shared.validators.required' | translate:{ field: 'general.date' | translate } }}</span>
+                }
+
+            </small>
+
+            }
         </div>
         <div class="input_row">
             <label for="categories">{{'expense.attach_receipt' | translate}}</label>
-            <app-file-upload />
+            <app-file-upload (fileUploaded)="onUploadFile($event)" />
+            @if (controls['receipt'].errors && isSubmitted && !isLoading) {
+
+            <small class="text-red-500">
+                @if (controls['receipt'].errors!['required']) {
+                <span>{{ 'shared.validators.required' | translate:{ field: 'expense.receipt' | translate } }}</span>
+                }
+
+            </small>
+
+            }
         </div>
 
+        <div class="input_row">
+            <div class="grid items-center grid-cols-4">
+                @for ( cat of categories; track cat) {
+                <div>
+
+                    <p-radiobutton #catInput name="category" [value]="cat" formControlName="category"
+                        [inputId]="cat.id" hidden  />
+                    <label [for]="cat.id" class="category-info" [class.active]="catInput.checked">
+                        <div [class]="'category-icon ' + cat.id">
+                            <i [class]="(cat?.icon || 'pi pi-bookmark') + ' text-gray-400 m-auto'"></i>
+                        </div>
+                        <span>
+                            {{cat.name}}
+                        </span>
+                    </label>
+                </div>
+                }
+            </div>
+            @if (controls['category'].errors && isSubmitted && !isLoading) {
+
+            <small class="text-red-500">
+                @if (controls['category'].errors!['required']) {
+                <span>{{ 'shared.validators.required' | translate:{ field: 'expense.category' | translate } }}</span>
+                }
+
+            </small>
+
+            }
+        </div>
         <div>
-            <p-button [label]="'general.save' | translate" styleClass="primary-btn w-full" />
+            <p-button (onClick)="addExpense()" [label]="'general.save' | translate" styleClass="primary-btn w-full"
+                [loading]="isLoading" />
 
         </div>
     </div>
