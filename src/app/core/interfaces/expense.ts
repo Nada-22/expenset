@@ -1,8 +1,17 @@
 export interface ExpenseI {
-    category: string,
+    category: ExpenseCategoryI,
     date: Date | string,
     amount: number,
     receipt: any,
-    usdAmount?: number
+    usdAmount?: number,
+    categoryIcon?:string
+
+}
+export interface ExpenseCategoryI {
+    id: string,
+    name: string,
+    createdAt: Date | string,
+    icon: string,
+  
 
 }

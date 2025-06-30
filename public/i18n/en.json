@@ -18,7 +18,9 @@
         "select_category": "Select Category",
         "categories": "Categories",
         "amount": "Amount",
-        "attach_receipt": "Attach Receipt"
+        "attach_receipt": "Attach Receipt",
+        "category": "Category",
+        "receipt":"Receipt"
     },
     "shared": {
         "validators": {

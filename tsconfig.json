@@ -37,6 +37,9 @@
       "@helpers/*": [
         "src/app/core/helpers/*"
       ],
+       "@state/*": [
+        "src/app/core/state/*"
+      ],
       "@environments/*": [
         "src/environments/*"
       ]

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '@environments/environment.development';
-import { ExpenseI } from '@interfaces/expense';
+import { ExpenseCategoryI, ExpenseI } from '@interfaces/expense';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,18 +14,18 @@ export class ExpenseService {
   constructor() { }
 
 
-  getAllExpenses() {
-    return this.http.get(this.API_URL + '/expenses');
+  getAllExpenses(): Observable<ExpenseI[]>  {
+    return this.http.get<ExpenseI[]>(this.API_URL + '/expenses');
 
   }
 
-  addExpense(expense: ExpenseI) {
-    return this.http.post(this.API_URL + '/expenses', expense);
+  addExpense(expense: ExpenseI): Observable<ExpenseI> {
+    return this.http.post<ExpenseI>(this.API_URL + '/expenses', expense);
 
   }
-  
-  getExpenseCategories(): Observable<any> {
 
-    return this.http.get(this.API_URL + '/categories');
+  getExpenseCategories(): Observable<ExpenseCategoryI[]> {
+
+    return this.http.get<ExpenseCategoryI[]>(this.API_URL + '/categories');
   }
 }
