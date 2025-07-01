@@ -80,11 +80,13 @@
         <p>{{'general.see_all' | translate}}</p>
     </div>
 
-    <div class=" recent-expenses p-4 grid md:grid-cols-4  gap-4">
+    <div [class]="'recent-expenses p-4 gap-4 ' + (uiExpenses.length > 0 ? ' grid md:grid-cols-4' : '')">
 
         @for ( expense of uiExpenses; track expense) {
         <app-expense-item [expense]="expense"></app-expense-item>
 
+        }@empty {
+        <app-empty-box />
         }
 
     </div>

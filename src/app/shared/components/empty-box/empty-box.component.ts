@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 })
 export class EmptyBoxComponent {
   title = input('No Data Found');
-  imgUrl = input('imgs/svg/empty-data.svg');
+  imgUrl = input('imgs/image.png');
   description = input('Sorry , No data found in this section');
   link = input({ label: '', routerLink: '' });
 }

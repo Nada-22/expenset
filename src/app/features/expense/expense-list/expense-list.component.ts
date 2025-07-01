@@ -16,6 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ButtonModule } from 'primeng/button';
 import { LangE } from 'src/app/core/enums/lang.enum';
 import { TranslationService } from '@services/translation.service';
+import { EmptyBoxComponent } from "../../../shared/components/empty-box/empty-box.component";
 
 @Component({
   selector: 'app-expense-list',
@@ -29,9 +30,9 @@ import { TranslationService } from '@services/translation.service';
     MenuModule,
     ExpenseItemComponent,
     ProgressSpinnerModule,
-    ButtonModule
-
-  ],
+    ButtonModule,
+    EmptyBoxComponent
+],
   templateUrl: './expense-list.component.html',
   styleUrl: './expense-list.component.scss'
 })
