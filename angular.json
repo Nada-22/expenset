@@ -34,7 +34,7 @@
             "styles": [
               "src/styles.scss"
             ],
-             "stylePreprocessorOptions": {
+            "stylePreprocessorOptions": {
               "includePaths": [
                 "public/"
               ]
@@ -104,6 +104,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "public/"
+              ]
+            },
             "scripts": []
           }
         }
