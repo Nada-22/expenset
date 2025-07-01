@@ -17,14 +17,12 @@ export class FileUploadComponent {
   file!: File;
   uploadFile(event: any) {
 
-    console.log(event.target.files[0]);
 
     let file = event.target.files[0] as File;
     this.fileService.validateFileSignature(file).then(result => {
       switch (result.status) {
         case 'allowed':
 
-          console.log('file passed validation:', result.details);
           this.file = file;
           this.fileUploaded.emit(file);
           break;

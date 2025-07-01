@@ -74,21 +74,19 @@ export class ExpenseFormComponent {
       usdAmount: this.expenseForm.get('amount')?.value as number / currency
     })
 
-    console.log(this.expenseForm.value);
     if (this.expenseForm.invalid) return;
     this.isLoading = true;
     this.expenseService.addExpense(this.expenseForm.value as ExpenseI).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: res => {
-        console.log(res);
         this.isLoading = false;
         this.toastService.showSuccessToast('expense created successfully');
         setTimeout(() => {
 
-          // this.router.navigate(['/expense'])
+          this.router.navigate(['/expense'])
         }, 500);
 
       }, error: err => {
-        console.log(err);
+        this.toastService.showSuccessToast('something error');
 
       }
     })
@@ -98,14 +96,12 @@ export class ExpenseFormComponent {
     this.categoriesLoading = true;
     this.expenseService.getExpenseCategories().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        console.log(res);
         this.categories = res;
         this.categoriesLoading = false;
 
 
       },
       error: (err) => {
-        console.log(err);
         this.categoriesLoading = false;
 
 
@@ -113,12 +109,7 @@ export class ExpenseFormComponent {
     })
   }
 
-  selectCategory(category: any) {
-    console.log(category);
-    console.log(this.expenseForm.value.category);
 
-
-  }
 
   onUploadFile(file: File) {
     this.expenseForm.get('receipt')?.setValue(file.name)
@@ -132,13 +123,11 @@ export class ExpenseFormComponent {
     this.currencyLoading = true
     this.currencyService.getCurrencyTypes().subscribe({
       next: res => {
-        console.log(res);
         this.currencyRates = res.conversion_rates;
         this.currencyLoading = false;
 
       },
       error: err => {
-        console.log(err);
         this.currencyLoading = false;
 
       }
@@ -146,15 +135,11 @@ export class ExpenseFormComponent {
   }
 
   checkCurrency(event: any) {
-    // this.expenseForm.patchValue({
-    //   currencyRate:event.value.value,
-    //   currencySign:event.value.key
-    // })
+
 
     Object.keys(event.value)
     for (const key in this.currencyRates) {
       const element = this.currencyRates[key];
-      console.log(element);
       if (element == event.value) {
         this.expenseForm.patchValue({
 
@@ -164,6 +149,5 @@ export class ExpenseFormComponent {
       }
 
     }
-    console.log(this.expenseForm.value);
   }
 }

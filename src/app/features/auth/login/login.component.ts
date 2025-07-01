@@ -38,7 +38,6 @@ export class LoginComponent {
 
   onLogin() {
     this.isSubmitted = true;
-    console.log(this.loginForm.value);
 
     if (this.loginForm.invalid) return;
 

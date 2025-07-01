@@ -32,8 +32,6 @@ export class TranslationService {
       default:
         break;
     }
-    console.log(lang);
-
     this.defaultLang.set(lang);
 
   }

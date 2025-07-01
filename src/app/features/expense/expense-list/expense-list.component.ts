@@ -17,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
 import { LangE } from 'src/app/core/enums/lang.enum';
 import { TranslationService } from '@services/translation.service';
 import { EmptyBoxComponent } from "../../../shared/components/empty-box/empty-box.component";
+import { ToastService } from '@services/toast.service';
 
 @Component({
   selector: 'app-expense-list',
@@ -32,7 +33,7 @@ import { EmptyBoxComponent } from "../../../shared/components/empty-box/empty-bo
     ProgressSpinnerModule,
     ButtonModule,
     EmptyBoxComponent
-],
+  ],
   templateUrl: './expense-list.component.html',
   styleUrl: './expense-list.component.scss'
 })
@@ -44,6 +45,7 @@ export class ExpenseListComponent {
   appState = inject(AppState);
   _translation = inject(TranslationService);
   _translate = inject(TranslateService);
+  toastService = inject(ToastService);
 
   expenses!: ExpenseI[];
   uiExpenses: ExpenseI[] = [];
@@ -108,6 +110,8 @@ export class ExpenseListComponent {
       error: err => {
         this.appState.setAppLoading(false);
         console.error(err);
+        this.toastService.showSuccessToast('something error');
+
       }
     });
   }
@@ -198,7 +202,6 @@ export class ExpenseListComponent {
   }
 
   changeLang() {
-    console.log(this._translation.defaultLang());
 
     switch (this._translation.defaultLang()) {
       case LangE.AR:
