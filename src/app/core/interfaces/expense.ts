@@ -3,6 +3,7 @@ export interface ExpenseI {
     date: Date | string,
     amount: number,
     currencyRate: number,
+    currencySign: string,
 
     receipt: any,
     usdAmount?: number,

@@ -12,7 +12,8 @@
             <p-select formControlName="currencyRate" styleClass="no_border_select" id="categories"
                 [options]="currencyRates|keyvalue" optionLabel="key" optionValue="value" [filter]="true"
                 [placeholder]="'expense.select_category' | translate" class="w-full" [loading]="currencyLoading"
-                [lazy]="true" [class.invalid_element]="isSubmitted &&controls['category'].errors" />
+                [lazy]="true" [class.invalid_element]="isSubmitted &&controls['category'].errors" 
+                (onChange)="checkCurrency($event)" />
             @if (controls['category'].errors && isSubmitted && !isLoading) {
             <small class="text-red-500">
                 @if (controls['category'].errors!['required']) {

@@ -5,7 +5,7 @@
         </div>
         <div>
             <p class="font-semibold mb-1">{{expense()?.category?.name || expense()?.category}}</p>
-            <span class="sub-text">Manually</span>
+            <span class="sub-text">{{expense()?.amount | currency : expense()?.currencySign }}</span>
         </div>
 
     </div>

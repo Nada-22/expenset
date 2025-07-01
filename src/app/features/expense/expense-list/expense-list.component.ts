@@ -182,7 +182,8 @@ export class ExpenseListComponent {
     this.loadMoreExpenses(); // restart pagination
   }
 
-  @HostListener('window:scroll', [])
+  @HostListener('document:scroll', ['$event.target'])
+
   onScroll(): void {
     const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
 

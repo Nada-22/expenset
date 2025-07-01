@@ -45,12 +45,13 @@ export class ExpenseFormComponent {
   categoriesLoading = false;
   categories: ExpenseCategoryI[] = [];
 
-  currencyRates: Object = {};
+  currencyRates: any = {};
   currencyLoading = false;
 
   expenseForm = new FormGroup({
     category: new FormControl<ExpenseCategoryI | null>(null, [Validators.required]),
     currencyRate: new FormControl(0, [Validators.required]),
+    currencySign: new FormControl('', [Validators.required]),
     amount: new FormControl(0, [Validators.required]),
     date: new FormControl('', [Validators.required]),
     receipt: new FormControl('', [Validators.required]),
@@ -82,8 +83,8 @@ export class ExpenseFormComponent {
         this.isLoading = false;
         this.toastService.showSuccessToast('expense created successfully');
         setTimeout(() => {
-          
-          this.router.navigate(['/expense'])
+
+          // this.router.navigate(['/expense'])
         }, 500);
 
       }, error: err => {
@@ -142,5 +143,27 @@ export class ExpenseFormComponent {
 
       }
     })
+  }
+
+  checkCurrency(event: any) {
+    // this.expenseForm.patchValue({
+    //   currencyRate:event.value.value,
+    //   currencySign:event.value.key
+    // })
+
+    Object.keys(event.value)
+    for (const key in this.currencyRates) {
+      const element = this.currencyRates[key];
+      console.log(element);
+      if (element == event.value) {
+        this.expenseForm.patchValue({
+
+          currencySign: key
+        })
+        break
+      }
+
+    }
+    console.log(this.expenseForm.value);
   }
 }
